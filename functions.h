@@ -2,7 +2,7 @@
 #define maxC 30
 
 float storage(float *max);
-int data(char name[maxP][maxC], float time[maxP], float rec[maxP]);
+int data(char name[maxP][maxC], float time[maxP], float rec[maxP], int *numP);
 int search(char id[maxC], char name[maxP][maxC], int numP);
 void info(char name[maxP][maxC], float time[maxP], float rec[maxP], int numP);
 void fact(char name[maxP][maxC], float time[maxP], float rec[maxP], float *max, int numP);

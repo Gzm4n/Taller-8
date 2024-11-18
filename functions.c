@@ -12,11 +12,12 @@ void storage(float *max){
     while (getchar()!='\n');
 }
 
-int data(char name[maxP][maxC], float time[maxP], float rec[maxP]){
+void data(char name[maxP][maxC], float time[maxP], float rec[maxP], int *numP){
     int c;
     printf("Ingrese la cantidad de productos que desea ingresar: ");
     scanf("%d", &c);
     while (getchar()!='\n');
+    *numP=c;
     printf("Recuerde, los productos a ingresar son %d, con un maximo de 30 caracteres\n", c);
     for (int i=0; i<c; i++){
         printf("Ingrese el nombre del producto %d: ", i+1);
@@ -31,7 +32,6 @@ int data(char name[maxP][maxC], float time[maxP], float rec[maxP]){
 
         while(getchar()!='\n');
     }
-    return c;
 }
 
 int search(char id[maxC], char name[maxP][maxC], int numP){
@@ -93,8 +93,13 @@ void fact(char name[maxP][maxC], float time[maxP], float rec[maxP], float *max, 
         }
         else{
             printf("El tiempo o los recursos economicos NO permiten la produccion\n");
+            printf("\n");
             printf("Presupuesto necesario: %.2f$. Tiempo necesario: %.2f\n", rn, tn);
             printf("Presupuesto disponible: %.2f$. Tiempo disponible: %.2f\n", *max, t);
+            printf("\n");
+            if (rn> *max) printf("Exceso de recursos economicos necesarios respecto al presupuesto establecido, se recomienda producir en menor cantidad.\n");
+            if (tn>t) printf("Exceso de tiempo necesario respecto al tiempo requerido, se recomienda ampliar el tiempo disponible.\n");
+            if (t>530) printf("El tiempo necesario sobrepasa un mes y el presupuesto final es mensual. Disminuya la cantidad de produccion.\n");
         }
     }
     else printf("Producto no encontrado\n");

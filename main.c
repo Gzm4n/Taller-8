@@ -10,32 +10,35 @@ int main (int argc, char *argv[]) {
     float time[maxP], resources[maxP], maxr;
 
     storage(&maxr);
-    numP=data(name, time, resources);
 
     do{
         printf("\n");
-        printf("Ingrese 1 si desea buscar un producto\n");
-        printf("Ingrese 2 si desea chequear la factibilidad de produccion\n");
-        printf("Ingrese 3 si desea editar un producto\n");
-        printf("Ingrese 4 si desea eliminar un producto\n");
-        printf("Ingrese 5 si desea ingresar un producto\n");
+        printf("Ingrese 1 para agregar productos, recuerde que el maximo de productos es 5\n");
+        printf("Ingrese 2 si desea buscar un producto\n");
+        printf("Ingrese 3 si desea chequear la factibilidad de produccion\n");
+        printf("Ingrese 4 si desea editar un producto\n");
+        printf("Ingrese 5 si desea eliminar un producto\n");
+        printf("Ingrese 6 si desea ingresar un producto adicional\n");
         scanf("%d", &op1);
         while (getchar()!='\n');
 
         switch(op1){
             case 1:
-            info(name, time, resources, numP);
+            data(name, time, resources, &numP);
             break;
             case 2:
-            fact(name, time, resources, &maxr, numP);
+            info(name, time, resources, numP);
             break;
             case 3:
-            edition(name, time, resources, numP);
+            fact(name, time, resources, &maxr, numP);
             break;
             case 4:
-            deletion(name, time, resources, &numP);
+            edition(name, time, resources, numP);
             break;
             case 5:
+            deletion(name, time, resources, &numP);
+            break;
+            case 6:
             productoPlus(name, time, resources, &numP);
             break;
             default:
@@ -46,7 +49,7 @@ int main (int argc, char *argv[]) {
         scanf("%d", &op3);
         while (getchar()!='\n');
         if (op3==1) wholeData(&numP, &maxr, name, time, resources);
-        
+
         printf("Ingrese 1 si desea cerrar el programa o ingrese cualquier tecla para continuar: ");
         op2=getchar();
         while(getchar()!= '\n');
