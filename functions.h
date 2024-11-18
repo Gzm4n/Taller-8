@@ -2,10 +2,11 @@
 #define maxC 30
 
 float storage(float *max);
-void data(char name[maxP][maxC], float time[maxP], float rec[maxP]);
-int search(char id[maxC], char name[maxP][maxC]);
-void info(char name[maxP][maxC], float time[maxP], float rec[maxP]);
-void fact(char name[maxP][maxC], float time[maxP], float rec[maxP], float *max);
-void edition(char name[maxP][maxC], float time[maxP], float rec[maxP]);
+int data(char name[maxP][maxC], float time[maxP], float rec[maxP]);
+int search(char id[maxC], char name[maxP][maxC], int numP);
+void info(char name[maxP][maxC], float time[maxP], float rec[maxP], int numP);
+void fact(char name[maxP][maxC], float time[maxP], float rec[maxP], float *max, int numP);
+void edition(char name[maxP][maxC], float time[maxP], float rec[maxP], int numP);
 void deletion(char name[maxP][maxC], float time[maxP], float rec[maxP], int *numP);
 void wholeData(int *numP, float *max, char name[maxP][maxC], float time[maxP], float rec[maxP]);
+int productoPlus(char name [maxP][maxC], float time [maxP], float rec[maxP], int *numP);
