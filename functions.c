@@ -51,7 +51,7 @@ void info(char name[maxP][maxC], float time[maxP], float rec[maxP]){
         printf("Tiempo de produccion: %.2f\n", time[aux]);
         printf("Recursos necesarios: %.2f\n", rec[aux]);
     }
-    else printf("Producto no encontrado");
+    else printf("Producto no encontrado\n");
 }
 
 void fact(char name[maxP][maxC], float time[maxP], float rec[maxP], float *max){
@@ -105,6 +105,7 @@ void edition(char name[maxP][maxC], float time[maxP], float rec[maxP]){
     if(aux!=-1){
         printf("Ingrese 1 para editar el nombre, 2 para editar los recursos o 3 para editar el tiempo: ");
         scanf("%d", &op);
+        while(getchar()!='\n');
         switch(op){
             case 1:
             printf("Ingrese el nuevo nombre del producto: ");
@@ -128,13 +129,13 @@ void edition(char name[maxP][maxC], float time[maxP], float rec[maxP]){
         }
     }
     else printf("Producto no encontrado\n");
-    while(getchar()!='\n');
 }
 
-void deletion(char name[maxP][maxC], float time[maxP], float rec[maxP]){
+void deletion(char name[maxP][maxC], float time[maxP], float rec[maxP], int *numP){
     char id[maxC];
     printf("Ingrese el nombre del producto que desea eliminar: ");
     fgets(id, maxC, stdin);
+    id[strcspn(id, "\n")]='\0';
     int aux=search(id, name);
     if(aux!=-1){
         for(int i=aux; i<maxP-1; i++){
@@ -144,5 +145,14 @@ void deletion(char name[maxP][maxC], float time[maxP], float rec[maxP]){
         }
         printf("Producto eliminado con exito\n");
     }
-    else printf("Producto no encontrado");
+    else printf("Producto no encontrado\n");
+    *numP-=1;
+}
+
+void wholeData(int *numP, float *max, char name[maxP][maxC], float time[maxP], float rec[maxP]){
+    printf("El total de productos es %d, con un total de recursos de: %.2f\n", *numP, *max);
+    printf("--------------------------------------------------------------------------\n");
+    for (int i=0; i< *numP; i++){
+        printf("El producto %s se produce con %.2f recursos en %.2f horas.\n", name[i], rec[i], time[i]);
+    }
 }

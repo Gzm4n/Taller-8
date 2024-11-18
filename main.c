@@ -5,7 +5,7 @@
 #define maxP 5
 
 int main (int argc, char *argv[]) {
-    int op1, op2;
+    int op1, op2, op3, numP=maxP;
     char name[maxP][maxC];
     float time[maxP], resources[maxP], maxr;
 
@@ -32,14 +32,17 @@ int main (int argc, char *argv[]) {
             edition(name, time, resources);
             break;
             case 4:
-            deletion(name, time, resources);
+            deletion(name, time, resources, &numP);
             break;
             default:
             printf("Esa no es una opcion valida\n");
             break;
         }
-
-        printf("Ingrese 1 si desea cerrar el programa o presione cualquier tecla para continuar: ");
+        printf("Desea mostrar todos los productos? presione 1. Si o 2. No\n");
+        scanf("%d", &op3);
+        while (getchar()!='\n');
+        if (op3==1) wholeData(&numP, &maxr, name, time, resources);
+        printf("Ingrese 1 si desea cerrar el programa o ingrese cualquier tecla para continuar: ");
         op2=getchar();
         while(getchar()!= '\n');
 
