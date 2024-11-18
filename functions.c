@@ -155,8 +155,7 @@ void deletion(char name[maxP][maxC], float time[maxP], float rec[maxP], int *num
 }
 
 void productoPlus(char name [maxP][maxC], float time [maxP], float rec[maxP], int *numP){
-    *numP+=1;
-    printf("Ingrese el nombre del producto %d: ", *numP);
+    printf("Ingrese el nombre del producto %d: ", *numP+1);
     fgets(name[*numP], maxC, stdin);
     name[*numP][strcspn(name[*numP], "\n")]='\0';
 
@@ -167,6 +166,7 @@ void productoPlus(char name [maxP][maxC], float time [maxP], float rec[maxP], in
     scanf("%f", &rec[*numP]);
 
     while(getchar()!='\n');
+    *numP+=1;
 }
 
 void wholeData(int *numP, float *max, char name[maxP][maxC], float time[maxP], float rec[maxP]){
